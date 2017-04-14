@@ -4,8 +4,12 @@ FROM centos
 #zpcheng make it
 MAINTAINER Captain Zhang <zhangpch666@163.com>
 
+#首先更新php rpm 源
+RUN yum update && yum -y install epel-release && \
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
 #用RUN命令调用yum包管理器安装PHP环境所依赖的程序包
-RUN yum update && yum -y install \
+RUN yum -y install \
 	curl \
 	nginx \
 	php70w-mysql \
